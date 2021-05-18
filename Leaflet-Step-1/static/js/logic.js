@@ -1,11 +1,11 @@
 //set up map 
 var myMap = L.map("map", {
     center: [38.5816, -121.4944],
-    zoom: 6,
+    zoom: 5,
 });
 
 //create tile layer
-L.titleLayer(
+L.tileLayer(
     "https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
     {
         attribution:
@@ -21,3 +21,6 @@ L.titleLayer(
 var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson";
 
 //use d3 to get and view data
+d3.json(url).then(function (data){
+    console.log(data);
+});
