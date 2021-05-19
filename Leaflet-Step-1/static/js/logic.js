@@ -78,7 +78,7 @@ d3.json(url).then(function (data){
     }).addTo(myMap);
 
     //create legend
-    var legend = L.control({ position: "bottomright"});
+    var legend = L.control({ position: "topright"});
     legend.onAdd = function () {
         var div = L.DomUtil.create("div", "info legend");
         depthScale =[0, 25, 50, 75, 100];
