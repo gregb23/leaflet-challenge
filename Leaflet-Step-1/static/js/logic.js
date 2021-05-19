@@ -48,4 +48,19 @@ d3.json(url).then(function (data){
 
         }
     }
+
+    //load data into geojson
+    L.geoJson(data, {
+        pointToLayer: function (feature, latlng) {
+            return L.circleMarker(
+                latlng,
+                { radius: markers (feature.properties.magnitude),
+                  fillColor: colorSelect (feature.goemetry.coordinates[2]),
+                  fillOpacity: 0.8,
+                  color: "black",
+                  weight: 0.8,
+                }
+            );
+        },
+    })
 });
