@@ -1,6 +1,6 @@
 //set up map 
 var myMap = L.map("map", {
-    center: [1.7146, 127.9679],
+    center: [5.8926, 95.3238],
     zoom: 5,
 });
 
@@ -37,7 +37,7 @@ d3.json(url).then(function (data){
             case depth > 75:
                 return "#C1392D";
             case depth > 50:
-                return "##DEB319";
+                return "#DEB319";
             case depth > 25:
                 return "#F1C50E";
             case depth > 0:
@@ -81,16 +81,15 @@ d3.json(url).then(function (data){
     var legend = L.control({ position: "bottomright"});
     legend.onAdd = function () {
         var div = L.DomUtil.create("div", "info legend");
-        depthScale =[-10, 0, 25, 50, 75, 100];
+        depthScale =[0, 25, 50, 75, 100];
         //write function
-        for (var i = 0; i < depthScale.lenght; i++){
+        for (var i = 0; i < depthScale.length; i++){
             div.innerHTML +=
-            '<i syle="background:' +
-            colorSelect(depthScale[i] + 1) +
-            '"></i>' + 
-            + depthScale[i] +
-            (depthScale[i + 1] ? " - " + depthScale[i + 1 ] + "<br>" : " + ");
-
+                '<i style="background:' +
+                colorSelect(depthScale[i] + 1) +
+                '"></i>' + 
+                + depthScale[i] +
+                (depthScale[i + 1] ? " - " + depthScale[i + 1 ] + "<br>" : " + ");
         }
         return div;            
     };
