@@ -81,6 +81,18 @@ d3.json(url).then(function (data){
     var legend = L.control({ position: "bottomright"});
     legend.onAdd = function () {
         var div = L.DomUtil.create("div", "info legend");
-        depthScale =[-25, 0, 25, 50, 75, 100];
-    }
+        depthScale =[-10, 0, 25, 50, 75, 100];
+        //write function
+        for (var i = 0; i < depthScale.lenght; i++){
+            div.innerHTML +=
+            '<i syle="background:' +
+            colorSelect(depthScale[i] + 1) +
+            '"></i>' + 
+            + depthScale[i] +
+            (depthScale[i + 1] ? " - " + depthScale[i + 1 ] + "<br>" : " + ");
+
+        }
+        return div;            
+    };
+    legend.addTo(myMap);
 });
