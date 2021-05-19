@@ -44,8 +44,7 @@ d3.json(url).then(function (data){
                 return "#00BE9C";
             default:
                 return "#52D68A";
-                        
-
+                    
         }
     }
 
@@ -54,13 +53,27 @@ d3.json(url).then(function (data){
         pointToLayer: function (feature, latlng) {
             return L.circleMarker(
                 latlng,
-                { radius: markers (feature.properties.magnitude),
-                  fillColor: colorSelect (feature.goemetry.coordinates[2]),
-                  fillOpacity: 0.8,
-                  color: "black",
-                  weight: 0.8,
+                { 
+                    radius: markers(feature.properties.mag),
+                    fillColor: colorSelect(feature.geometry.coordinates[2]),
+                    fillOpacity: 0.7,
+                    color: "black",
+                    weight: 0.6,
                 }
             );
         },
-    })
+
+        //set up marker popup
+        onEachFeature: function (feature, layer){
+            layer.bindPopup(
+                "<h4> Site: " +
+                feature.properties.place +
+                "</h4> <hr> <h4> Magnitude: " +
+                feature.properties.mag +
+                "</h4> <hr> <h4> Time: " +
+                new Date(feature.properties.time) +
+                "</h4>"
+            );
+        },
+    }).addTo(myMap);
 });
