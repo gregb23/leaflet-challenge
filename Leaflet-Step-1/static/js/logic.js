@@ -23,4 +23,29 @@ var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.ge
 //use d3 to get and view data
 d3.json(url).then(function (data){
     console.log(data);
+
+    //set up markers
+    function markers(magnitude) {
+        return magnitude * 5;
+    }
+
+    //set colors for depth - https://www.schemecolor.com/flat-graphic.php
+    function colorSelect(depth){
+        switch (true){
+            case depth > 80:
+                return "#9B271B";
+            case depth > 60:
+                return "#C1392D";
+            case depth > 40:
+                return "##DEB319";
+            case depth > 20:
+                return "#F1C50E";
+            case depth > 10:
+                return "#00BE9C";
+            default:
+                return "#52D68A";
+                        
+
+        }
+    }
 });
