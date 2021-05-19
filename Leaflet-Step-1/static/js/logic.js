@@ -32,15 +32,15 @@ d3.json(url).then(function (data){
     //set colors for depth - https://www.schemecolor.com/flat-graphic.php
     function colorSelect(depth){
         switch (true){
-            case depth > 80:
+            case depth > 100:
                 return "#9B271B";
-            case depth > 60:
+            case depth > 75:
                 return "#C1392D";
-            case depth > 40:
+            case depth > 50:
                 return "##DEB319";
-            case depth > 20:
+            case depth > 25:
                 return "#F1C50E";
-            case depth > 10:
+            case depth > 0:
                 return "#00BE9C";
             default:
                 return "#52D68A";
@@ -56,9 +56,9 @@ d3.json(url).then(function (data){
                 { 
                     radius: markers(feature.properties.mag),
                     fillColor: colorSelect(feature.geometry.coordinates[2]),
-                    fillOpacity: 0.7,
-                    color: "black",
-                    weight: 0.6,
+                    fillOpacity: 0.75,
+                    color: "gray",
+                    weight: 0.3,
                 }
             );
         },
@@ -76,4 +76,11 @@ d3.json(url).then(function (data){
             );
         },
     }).addTo(myMap);
+
+    //create legend
+    var legend = L.control({ position: "bottomright"});
+    legend.onAdd = function () {
+        var div = L.DomUtil.create("div", "info legend");
+        depthScale =[-25, 0, 25, 50, 75, 100];
+    }
 });
