@@ -8,3 +8,18 @@ body,
 html {
   height: 100%;
 }
+
+/*fix legend*/
+.legend {
+  background-color: whitesmoke;
+  padding: 10px;
+}
+
+/*set color box*/
+.legend i {
+  float: left;
+  height: 12px;
+  width: 12px;
+  padding: 1px;
+  margin-right: 5px;
+}

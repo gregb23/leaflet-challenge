@@ -1,7 +1,7 @@
 //set up map 
 var myMap = L.map("map", {
-    center: [5.8926, 95.3238],
-    zoom: 5,
+    center: [25.6634, 94.4703],
+    zoom: 2,
 });
 
 //create tile layer
@@ -78,7 +78,7 @@ d3.json(url).then(function (data){
     }).addTo(myMap);
 
     //create legend
-    var legend = L.control({ position: "topright"});
+    var legend = L.control({ position: "bottomright"});
     legend.onAdd = function () {
         var div = L.DomUtil.create("div", "info legend");
         depthScale =[0, 25, 50, 75, 100];
